@@ -57,11 +57,14 @@ app.include_router(exchange_router)
 
 
 if __name__ == "__main__":
+    import os
     import uvicorn
+
+    port = int(os.environ.get("PORT", 8000))
     uvicorn.run(
         app,
-        host=settings.SVC_HOST,
-        port=settings.SVC_PORT,
+        host="0.0.0.0",
+        port=port,
         reload=settings.SVC_RELOAD,
         log_level=settings.LOG_LEVEL.lower()
     )
